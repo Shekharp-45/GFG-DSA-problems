@@ -96,32 +96,23 @@ class Solution{
   public:
     /*You are required to complete below method */
     int maxLevelSum(Node* root) {
-        
-        
-        if(!root)return 0;
+        int MaxSum=INT_MIN,sum=0;
         queue<Node*>q;
         q.push(root);
-        int Maxsum=INT_MIN;
         
         while(!q.empty()){
-            int sizee=q.size();
-            int curr_level_sum=0;
-            for(int i=0;i<sizee;i++){
-                Node* curr=q.front();
+            int n=q.size();
+            sum=0;
+            while(n--){
+                Node *temp=q.front();
                 q.pop();
-                curr_level_sum+=curr->data;
-                
-                if(curr->left!=NULL){
-                    q.push(curr->left);
-                }
-                if(curr->right!=NULL){
-                    q.push(curr->right);
-                }
+                sum+=temp->data;
+                if(temp->left)q.push(temp->left);
+                if(temp->right)q.push(temp->right);
             }
-            Maxsum=max(Maxsum,curr_level_sum);
-            
+            MaxSum=max(MaxSum,sum);
         }
-        return Maxsum;
+        return MaxSum;
     }
 };
 
