@@ -27,45 +27,38 @@ void printList(Node* node) {
 
 
 // } Driver Code Ends
-/* Link list Node
+/* Link list Node 
 struct Node {
     int data;
     Node* next;
-
+    
     Node(int x){
         data = x;
         next = NULL;
     }
-
+    
 }; */
-class Solution {
-  public:
-    /* Should return data of middle node. If linked list is empty, then -1 */
-    int getMiddle(Node* head) {
-        // code here
-        Node* curr=head;
-        int cnt=0;
-        while(curr!=NULL){
-            cnt++;
-            curr=curr->next;
+class Solution{
+    public:
+    /* Should return data of middle node. If linked list is empty, then  -1*/
+    int getMiddle(Node *head)
+    {
+        if(head==NULL)return -1;
+        
+        if(head->next==NULL)return head->data;
+        Node *fast=head, *slow=head;
+        while(slow!=NULL && fast!=NULL){
+            fast=fast->next;
+            if(fast!=NULL){
+                fast=fast->next;
+                slow=slow->next;
+            }
         }
-        int mid=0;
-        if(cnt%2==0){
-            mid=(cnt/2);
-        }else{
-            mid=cnt/2;
-        }
-        cnt=0;
-        curr=head;
-        while(curr!=NULL){
-            if(cnt==mid)return curr->data;
-            
-            cnt++;
-            curr=curr->next;
-        }
-        return 0;
+        return slow->data;
+        
     }
 };
+
 
 
 //{ Driver Code Starts.
