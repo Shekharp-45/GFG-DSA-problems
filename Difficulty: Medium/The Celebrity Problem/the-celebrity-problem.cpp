@@ -13,24 +13,25 @@ class Solution {
     // Function to find if there is a celebrity in the party or not.
     int celebrity(vector<vector<int> >& mat) {
         int n=mat.size();
-        int idxRow = 0;
+        int idxColm = 0;
         //row idx where 1 is present
     	for(int i = 0; i < n; i++) {
-    	    if(mat[idxRow][i] == 1) {
-    	        idxRow = i;
+    	    if(mat[idxColm][i] == 1) {
+    	        idxColm = i;
     	    }
     	}
 
         //cheak for false cases then return -1
     	for(int i = 0; i < n; i++) {
-    	    if(i != idxRow && (mat[idxRow][i] == 1 || mat[i][idxRow] == 0)) {
+    	    if(i != idxColm && (mat[idxColm][i] == 1 || mat[i][idxColm] == 0)) {
     	        return -1;
     	    }
     	}
     	
-    	return idxRow;
+    	return idxColm;
     }
 };
+
 
 //{ Driver Code Starts.
 
