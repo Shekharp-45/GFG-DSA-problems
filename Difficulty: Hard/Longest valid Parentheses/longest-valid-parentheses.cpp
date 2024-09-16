@@ -4,13 +4,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+
 // } Driver Code Ends
 // User function Template for C++
 
-class Solution{
-public:
-    int maxLength(string S){
-        stack<int>st;
+class Solution {
+  public:
+    int maxLength(string& S) {
+        // code here
+         stack<int>st;
         st.push(-1);
         int n=S.length();
         int maxlen=0;
@@ -33,15 +35,15 @@ public:
 
 //{ Driver Code Starts.
 
-int main(){
+int main() {
     int t;
-    cin>>t;
-    while(t--){
+    cin >> t;
+    while (t--) {
         string S;
-        cin>>S;
-        
+        cin >> S;
+
         Solution ob;
-        cout<<ob.maxLength(S)<<"\n";
+        cout << ob.maxLength(S) << "\n";
     }
     return 0;
 }
