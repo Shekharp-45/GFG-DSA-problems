@@ -18,27 +18,19 @@ int main()
 // } Driver Code Ends
 
 
-int longestSubstrDistinctChars (string S)
+int longestSubstrDistinctChars (string s)
 {
-    int n=S.length();
-    int ans=0;
-    
-    for(int i=0;i<n;i++){
-        //need to cheak for each char from starting
-        vector<bool>Visited(256);
-        
-        for(int j=i;j<n;j++){
-            if(Visited[S[j]]==true){
-                break;
-            }else{
-                ans=max(ans,j-i+1);
-                Visited[S[j]]=true;
+     int tail=0,head=0,ans=INT_MIN;
+        unordered_map<char,int>mp;
+        for(head=0;head<s.size();head++){
+            while(mp[s[head]]>0){//
+                ans=max(ans,head-tail);
+                mp[s[tail]]--;
+                tail++;
             }
-        }
-        //remove the first element from substr 
-        //we got ans where sybstr start from that ele
-        //but we want max ans so need to iterate all the ele
-        Visited[S[i]]=false;
-    }
-    return ans;
+            mp[s[head]]++;
+        }//all unique char ale tr while loop not run So ans is taken last
+        ans=max(ans,head-tail);//teva head last la & tail 1st la asto 
+        return ans;//which return whole string
+
 }
