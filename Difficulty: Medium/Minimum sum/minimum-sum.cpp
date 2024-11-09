@@ -1,15 +1,14 @@
 //{ Driver Code Starts
-//Initial template for C++
-
 #include <bits/stdc++.h>
 using namespace std;
 
-// } Driver Code Ends
-//User function template for C++
 
-class Solution{   
-public:
-    string stringtoint(const string &num1,const string &num2){
+// } Driver Code Ends
+// User function template for C++
+
+class Solution {
+  public:
+  string stringtoint(const string &num1,const string &num2){
          int carry = 0;
         string result = "";
         int i = num1.length() - 1;
@@ -29,23 +28,28 @@ public:
         
         return result;
     }
-    
-    string solve(int arr[], int n) {
-        sort(arr,arr+n);
-        string num1="";
-        string num2="";
-        for(int i=0;i<n;i++){
-            if(i%2==0){
-                num1+=to_string(arr[i]);
-            }else{
-                num2+=to_string(arr[i]);
+    string minSum(vector<int> &arr) {
+        sort(arr.begin(),arr.end());
+        int i=0;
+        int n=arr.size();
+        while(i<n){
+            if(arr[i]==0){
+                i++;
+            }
+            else{
+                break;
             }
         }
-        string ans = stringtoint(num1, num2);
-         // Remove leading zeros
-        ans.erase(0, ans.find_first_not_of('0'));
+        string oddsum="",evensum="";
+        for(;i<n;i++){
+            if(i%2==0){
+                evensum+=to_string(arr[i]);
+            }else{
+                oddsum+=to_string(arr[i]);
+            }
+        }
+        string ans = stringtoint(evensum, oddsum);
         
-        // If the result is empty after removing zeros, it means the result was zero
         if (ans.empty()) {
             ans = "0";
         }
@@ -54,20 +58,27 @@ public:
 };
 
 //{ Driver Code Starts.
+
 int main() {
     int t;
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n;
-        cin >> n;
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+        vector<int> a;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            a.push_back(number);
         }
+
         Solution ob;
-        auto ans = ob.solve(arr, n);
-        cout << ans << "\n";
+        string ans = ob.minSum(a);
+        cout << ans << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
+
 // } Driver Code Ends
