@@ -4,30 +4,28 @@ using namespace std;
 
 
 // } Driver Code Ends
-class Solution
-{
-    public:
-    //Function is to check whether two strings are anagram of each other or not.
-    bool isAnagram(string a, string b){
+class Solution {
+  public:
+    // Function is to check whether two strings are anagram of each other or not.
+    bool areAnagrams(string& s1, string& s2) {
+        if(s1.length()!=s2.length()){
+            return false;
+        }
+        unordered_map<char,int>mp;
         
-         unordered_map<char,int>m;
-          if(a.length()!=b.length())return false;
-        for(char i: a){
-            m[i]++;
+        for(char &it:s1){
+            mp[it]++;
         }
         
-        for(char it:b){
-            if (m.find(it) ==m.end() || m[it] == 0)//mp[it] nsel tr false or cnt =0 asel tr
-            return false;
-            
-           //otherwise aahe to b mde so doghach ek count-- 
-            m[it]--;
+        for(int i=0;i<s2.length();i++){
+            if(mp.find(s2[i])==mp.end() || mp[s2[i]] == 0){
+                return false;
+            }
+            mp[s2[i]]--;
         }
         return true;
     }
-
 };
-
 
 //{ Driver Code Starts.
 
@@ -42,10 +40,11 @@ int main() {
 
         cin >> c >> d;
         Solution obj;
-        if (obj.isAnagram(c, d))
-            cout << "YES" << endl;
+        if (obj.areAnagrams(c, d))
+            cout << "true" << endl;
         else
-            cout << "NO" << endl;
+            cout << "false" << endl;
+        cout << "~" << endl;
     }
 }
 
