@@ -6,6 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
+  
    int pivotIndex(vector<int>& arr,int l,int h){
        int s=l;
        int e=h;
@@ -49,6 +50,8 @@ class Solution {
       }
       return -1;
    }
+   
+   
     int search(vector<int>& arr, int key) {
          int s=0;
         int ans=-1;
@@ -81,6 +84,7 @@ int main() {
         cin >> key;
         Solution ob;
         cout << ob.search(arr, key) << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
