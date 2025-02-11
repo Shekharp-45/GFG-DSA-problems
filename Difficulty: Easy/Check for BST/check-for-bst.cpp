@@ -20,8 +20,7 @@ struct Node {
 class Solution {
   public:
     // Function to check whether a Binary Tree is BST or not.
-    
-    void solve(Node* root,vector<int>&ans){
+      void solve(Node* root,vector<int>&ans){
         if(!root){
             return ;
         }
@@ -138,6 +137,7 @@ int main() {
 
         else
             cout << "false\n";
+        cout << "~" << endl;
     }
     return 0;
 }
